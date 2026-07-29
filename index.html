@@ -471,47 +471,40 @@ input,textarea,select { font-family:var(--font-body); }
 .mk-ccard { background:var(--paper-50); border:1px solid var(--paper-200); border-left:2px solid var(--gold-400); border-radius:3px; padding:8px; display:flex; flex-direction:column; gap:4px; flex:1; }
 .mk-ccard .pv-pill { margin-top:auto; }
 
-/* ---------- S9 Refinement ---------- */
-.refine-wrap { display:grid; grid-template-columns:1.5fr 1fr; gap:28px; margin-top:36px; align-items:start; }
-.refine-stage {
-  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-md); overflow:hidden;
+/* ---------- S9 Refinement — one simple list ---------- */
+.el-list { display:flex; flex-direction:column; gap:10px; margin-top:32px; }
+.el-row {
+  background:var(--surface); border:1px solid var(--bg-gray-100); border-radius:var(--radius-lg);
+  padding:14px 18px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:14px;
+  transition:opacity 200ms var(--ease);
 }
-.rf-top { background:var(--ink-900); padding:13px 18px; display:flex; align-items:center; gap:10px; }
-.rf-top .wordmark { font-size:14px; }
-.rf-body { padding:18px; display:flex; flex-direction:column; gap:12px; }
-.rf-el {
-  border:1.5px dashed transparent; border-radius:var(--radius-sm); padding:14px 16px;
-  cursor:pointer; transition:all 150ms var(--ease); position:relative; background:var(--paper-50);
+.el-row[data-state="remove"] { opacity:.45; }
+.el-move { display:flex; flex-direction:column; gap:4px; flex:none; }
+.el-move .mv {
+  width:28px; height:22px; border:1px solid var(--gray-300); background:var(--bg-white);
+  border-radius:6px; color:var(--gray-600); font-size:11px; cursor:pointer; line-height:1;
+  display:flex; align-items:center; justify-content:center; transition:all 150ms var(--ease); padding:0;
 }
-.rf-el:hover { border-color:var(--brand-orange); }
-.rf-el .rf-name { font-family:var(--font-sans); font-weight:700; font-size:13.5px; color:var(--ink-800); }
-.rf-el .rf-hint { font-size:12.5px; color:var(--fg-subtle); }
-.rf-el .rf-state {
-  position:absolute; top:10px; right:12px; font-family:var(--font-sans); font-size:10.5px;
-  font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:999px;
+.el-move .mv:hover { border-color:var(--brand-orange); color:var(--brand-orange); background:var(--orange-light); }
+.el-ord {
+  width:28px; height:28px; border-radius:8px; background:var(--orange-light); color:var(--brand-orange);
+  font-family:var(--font-sans); font-weight:700; font-size:13px;
+  display:flex; align-items:center; justify-content:center; flex:none;
 }
-.rf-el[data-state="keep"] .rf-state { background:var(--bg-gray-100); color:var(--gray-600); }
-.rf-el[data-state="change"] .rf-state { background:var(--orange-light); color:var(--brand-orange-dark); }
-.rf-el[data-state="remove"] .rf-state { background:rgba(239,68,68,.10); color:var(--danger); }
-.rf-el[data-state="remove"] { opacity:.45; }
-.refine-side h4 { font-family:var(--font-sans); font-weight:600; font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:var(--gray-600); margin-bottom:6px; }
-.refine-side .side-sub { font-size:14px; color:var(--fg-muted); margin-bottom:16px; }
-.prio-list { display:flex; flex-direction:column; gap:8px; }
-.prio-item {
-  background:var(--surface); border:1px solid var(--bg-gray-100); border-radius:var(--radius-md);
-  padding:12px 16px; font-family:var(--font-sans); font-weight:600; font-size:14px; color:var(--navy);
-  display:flex; align-items:center; gap:12px; cursor:grab; box-shadow:var(--shadow-sm);
-  transition:box-shadow 150ms var(--ease);
+.el-body { flex:1; min-width:0; }
+.el-name { font-family:var(--font-sans); font-weight:700; font-size:14.5px; color:var(--navy); }
+.el-hint { font-size:12.5px; color:var(--gray-500); }
+.el-seg { display:flex; background:var(--bg-gray-100); border-radius:10px; padding:3px; gap:2px; flex:none; }
+.el-seg .seg {
+  font-family:var(--font-sans); font-weight:600; font-size:12px; padding:6px 13px;
+  border:none; background:transparent; border-radius:8px; color:var(--gray-500); cursor:pointer;
+  transition:all 150ms var(--ease);
 }
-.prio-item:active { cursor:grabbing; }
-.prio-item.dragging { opacity:.4; }
-.prio-item .grip { color:var(--gray-400); font-size:15px; letter-spacing:1px; }
-.prio-item .pn {
-  width:22px; height:22px; border-radius:7px; background:var(--orange-light); color:var(--brand-orange);
-  display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:700; font-size:11px; flex:none;
-}
-.refine-legend { margin-top:22px; font-size:13px; color:var(--fg-subtle); font-family:var(--font-sans); line-height:1.7; }
+.el-seg .seg:hover { color:var(--navy); }
+.el-seg .seg.on { background:var(--bg-white); color:var(--navy); box-shadow:var(--shadow-sm); }
+.el-seg .seg.on[data-s="change"] { color:var(--brand-orange-dark); }
+.el-seg .seg.on[data-s="remove"] { color:var(--danger); }
+.el-tip { margin-top:16px; font-family:var(--font-sans); font-size:13px; color:var(--gray-500); }
 
 /* ---------- S10 Summary ---------- */
 .sum-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:36px; }
@@ -702,7 +695,7 @@ input,textarea,select { font-family:var(--font-body); }
 @media (max-width: 900px) {
   .kit-grid,.sum-grid,.src-grid,.det-cards,.team-grid { grid-template-columns:1fr; }
   .pick-grid,.tpl-grid,.mock-grid,.pub-grid,.os-grid { grid-template-columns:1fr 1fr; }
-  .refine-wrap,.change-layout { grid-template-columns:1fr; }
+  .change-layout { grid-template-columns:1fr; }
   .change-panel { position:static; }
   .af-body { grid-template-columns:1fr; }
   .af-list { border-right:none; border-bottom:1px solid var(--border); max-height:230px; }
@@ -738,7 +731,9 @@ input,textarea,select { font-family:var(--font-body); }
   .af-detail .det-name { font-size:21px; }
   .stepper .st-lbl { font-size:9px; }
   .cp-log { max-height:180px; }
-  .refine-legend { font-size:12px; }
+  .el-row { flex-wrap:wrap; }
+  .el-seg { width:100%; }
+  .el-seg .seg { flex:1; }
   .voice-quote { font-size:17px; }
   .phrase { font-size:15px; }
 }
@@ -1411,60 +1406,65 @@ input,textarea,select { font-family:var(--font-body); }
   <div class="wrap">
     <div class="eyebrow">Phase 3 · Refinement</div>
     <h2 class="serif-h" style="font-size:40px; margin-top:14px;">Keep what earns its place. Cut what doesn't.</h2>
-    <p style="color:var(--fg-muted); margin-top:12px; max-width:640px;">Tap any element to keep, change, or remove it. Drag the list on the right so the first thing a client sees is the thing they came for.</p>
+    <p style="color:var(--fg-muted); margin-top:12px; max-width:640px;">This is everything your app will show, top to bottom in this order. Use the arrows to move what matters most to the top. Keep it, have the agents change it, or remove it — one tap each.</p>
 
-    <div class="refine-wrap">
-      <div class="refine-stage">
-        <div class="rf-top"><span class="wordmark wordmark--white">YIELDS<span class="g4u">4U</span></span><span style="font-family:var(--font-sans); font-size:10px; color:var(--ink-400); letter-spacing:.12em; text-transform:uppercase;">Client onboarding</span></div>
-        <div class="rf-body" id="rf-body">
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Welcome banner — a note from Leibel</div>
-            <div class="rf-hint">"You've done the hard part. Here's what happens next."</div>
-            <span class="rf-state">Keep</span>
-          </div>
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Onboarding progress stepper</div>
-            <div class="rf-hint">Agreement → Transfer → Funding → First review</div>
-            <span class="rf-state">Keep</span>
-          </div>
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Documents to sign</div>
-            <div class="rf-hint">E-signature queue with due dates</div>
-            <span class="rf-state">Keep</span>
-          </div>
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Transfer tracker</div>
-            <div class="rf-hint">Live ACAT status from Schwab</div>
-            <span class="rf-state">Keep</span>
-          </div>
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Ask a question</div>
-            <div class="rf-hint">Routed to your team, not a bot</div>
-            <span class="rf-state">Keep</span>
-          </div>
-          <div class="rf-el" data-state="keep">
-            <div class="rf-name">Market news feed</div>
-            <div class="rf-hint">Third-party headlines</div>
-            <span class="rf-state">Keep</span>
-          </div>
+    <div class="el-list" id="el-list">
+      <div class="el-row" data-state="keep" data-short="Progress stepper">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">1</div>
+        <div class="el-body">
+          <div class="el-name">Onboarding progress stepper</div>
+          <div class="el-hint">Agreement → Transfer → Funding → First review</div>
         </div>
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
       </div>
-      <div class="refine-side">
-        <h4>Priority order</h4>
-        <p class="side-sub">Drag to reorder. Whatever sits on top greets the client first.</p>
-        <div class="prio-list" id="prio-list">
-          <div class="prio-item" draggable="true"><span class="grip">⠿</span><span class="pn">1</span>Progress stepper</div>
-          <div class="prio-item" draggable="true"><span class="grip">⠿</span><span class="pn">2</span>Documents to sign</div>
-          <div class="prio-item" draggable="true"><span class="grip">⠿</span><span class="pn">3</span>Transfer tracker</div>
-          <div class="prio-item" draggable="true"><span class="grip">⠿</span><span class="pn">4</span>Welcome banner</div>
-          <div class="prio-item" draggable="true"><span class="grip">⠿</span><span class="pn">5</span>Ask a question</div>
+      <div class="el-row" data-state="keep" data-short="Documents to sign">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">2</div>
+        <div class="el-body">
+          <div class="el-name">Documents to sign</div>
+          <div class="el-hint">E-signature queue with due dates</div>
         </div>
-        <div class="refine-legend">
-          <b>Tap once</b> to change · <b>twice</b> to remove · <b>three times</b> to keep.<br>
-          Try removing the market news feed. Most firms do.
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
+      </div>
+      <div class="el-row" data-state="keep" data-short="Transfer tracker">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">3</div>
+        <div class="el-body">
+          <div class="el-name">Transfer tracker</div>
+          <div class="el-hint">Live ACAT status from Schwab</div>
         </div>
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
+      </div>
+      <div class="el-row" data-state="keep" data-short="Welcome banner">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">4</div>
+        <div class="el-body">
+          <div class="el-name">Welcome banner — a note from Leibel</div>
+          <div class="el-hint">"You've done the hard part. Here's what happens next."</div>
+        </div>
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
+      </div>
+      <div class="el-row" data-state="keep" data-short="Ask a question">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">5</div>
+        <div class="el-body">
+          <div class="el-name">Ask a question</div>
+          <div class="el-hint">Routed to your team, not a bot</div>
+        </div>
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
+      </div>
+      <div class="el-row" data-state="keep" data-short="Market news feed">
+        <div class="el-move"><button class="mv" data-dir="up" aria-label="Move up">▲</button><button class="mv" data-dir="down" aria-label="Move down">▼</button></div>
+        <div class="el-ord">6</div>
+        <div class="el-body">
+          <div class="el-name">Market news feed</div>
+          <div class="el-hint">Third-party headlines</div>
+        </div>
+        <div class="el-seg"><button class="seg on" data-s="keep">Keep</button><button class="seg" data-s="change">Change</button><button class="seg" data-s="remove">Remove</button></div>
       </div>
     </div>
+    <p class="el-tip">Tip: try removing the market news feed. Most firms do.</p>
 
     <div class="screen-foot">
       <button class="btn btn--gold btn--lg" onclick="go(10)">Looks Right <span class="arr">→</span></button>
@@ -1917,32 +1917,31 @@ document.getElementById('mock-grid').addEventListener('click', e=>{
 /* ============================================================
    S9 REFINEMENT
    ============================================================ */
-const RF_CYCLE={keep:'change',change:'remove',remove:'keep'};
-const RF_LABEL={keep:'Keep',change:'Change',remove:'Remove'};
-document.getElementById('rf-body').addEventListener('click', e=>{
-  const el=e.target.closest('.rf-el'); if(!el) return;
-  const next=RF_CYCLE[el.dataset.state];
-  el.dataset.state=next;
-  el.querySelector('.rf-state').textContent=RF_LABEL[next];
-  if (el.querySelector('.rf-name').textContent.includes('Market news'))
-    state.removedNews = next==='remove';
+const elList=document.getElementById('el-list');
+elList.addEventListener('click', e=>{
+  const seg=e.target.closest('.seg');
+  if (seg){
+    const row=seg.closest('.el-row');
+    row.querySelectorAll('.seg').forEach(s=>s.classList.remove('on'));
+    seg.classList.add('on');
+    row.dataset.state=seg.dataset.s;
+    if (row.dataset.short==='Market news feed') state.removedNews = row.dataset.state==='remove';
+    renumberEls();
+    return;
+  }
+  const mv=e.target.closest('.mv');
+  if (mv){
+    const row=mv.closest('.el-row');
+    if (mv.dataset.dir==='up' && row.previousElementSibling) elList.insertBefore(row, row.previousElementSibling);
+    else if (mv.dataset.dir==='down' && row.nextElementSibling) elList.insertBefore(row.nextElementSibling, row);
+    renumberEls();
+  }
 });
-/* drag to reorder priorities */
-const prio=document.getElementById('prio-list');
-let dragEl=null;
-prio.addEventListener('dragstart', e=>{ dragEl=e.target.closest('.prio-item'); dragEl.classList.add('dragging'); });
-prio.addEventListener('dragend', ()=>{ if(dragEl){dragEl.classList.remove('dragging'); dragEl=null; renumber();} });
-prio.addEventListener('dragover', e=>{
-  e.preventDefault();
-  const after=[...prio.querySelectorAll('.prio-item:not(.dragging)')].find(item=>{
-    const r=item.getBoundingClientRect();
-    return e.clientY < r.top + r.height/2;
+function renumberEls(){
+  let n=1;
+  [...elList.querySelectorAll('.el-row')].forEach(r=>{
+    r.querySelector('.el-ord').textContent = r.dataset.state==='remove' ? '–' : n++;
   });
-  if (!dragEl) return;
-  if (after) prio.insertBefore(dragEl, after); else prio.appendChild(dragEl);
-});
-function renumber(){
-  [...prio.querySelectorAll('.prio-item .pn')].forEach((n,i)=>n.textContent=i+1);
 }
 
 /* ============================================================
@@ -1953,7 +1952,8 @@ function renderSummary(){
   document.getElementById('sum-template').textContent=state.template;
   document.getElementById('sum-sources').textContent=state.sources.length?state.sources.join(' · '):'None yet — sample data will stand in';
   document.getElementById('sum-mock').textContent=state.mock;
-  const first=prio.querySelector('.prio-item')?.textContent.replace(/[⠿0-9]/g,'').trim()||'Progress stepper';
+  const firstRow=[...elList.querySelectorAll('.el-row')].find(r=>r.dataset.state!=='remove');
+  const first=firstRow ? firstRow.dataset.short : 'Progress stepper';
   document.getElementById('sum-layout').textContent=first+' first'+(state.removedNews?' · market news removed.':'.');
 }
 
