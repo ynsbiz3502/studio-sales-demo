@@ -700,11 +700,47 @@ input,textarea,select { font-family:var(--font-body); }
 .os-closer .oc-line em { color:var(--brand-orange); font-style:normal; }
 
 @media (max-width: 900px) {
-  .kit-grid,.sum-grid,.src-grid,.det-cards { grid-template-columns:1fr; }
+  .kit-grid,.sum-grid,.src-grid,.det-cards,.team-grid { grid-template-columns:1fr; }
   .pick-grid,.tpl-grid,.mock-grid,.pub-grid,.os-grid { grid-template-columns:1fr 1fr; }
   .refine-wrap,.change-layout { grid-template-columns:1fr; }
+  .change-panel { position:static; }
   .af-body { grid-template-columns:1fr; }
+  .af-list { border-right:none; border-bottom:1px solid var(--border); max-height:230px; }
   #s1 h1 { font-size:38px; }
+}
+@media (max-width: 640px) {
+  .screen { padding:84px 16px 128px; }
+  #topbar { padding:0 16px; }
+  #topbar .phase-label { display:none; }
+  #railwrap { padding:8px 12px; }
+  #railwrap .keyhint { display:none; }
+  .serif-h { font-size:27px !important; }
+  #s1 h1 { font-size:30px !important; }
+  #s1 .sub { font-size:15.5px; }
+  #s1 .sub br { display:none; }
+  .domain-row { flex-direction:column; }
+  .domain-row .btn { justify-content:center; }
+  .pick-grid,.tpl-grid,.mock-grid,.pub-grid,.os-grid { grid-template-columns:1fr; }
+  .screen-foot,.builder-nav,.af-header { flex-wrap:wrap; gap:12px; }
+  .builder-card { padding:26px 20px; }
+  .opt { font-size:13px; padding:9px 14px; }
+  .kit-card,.disc-item { padding:18px 16px; }
+  .disc-item { gap:12px; }
+  .font-specimens { gap:16px; }
+  .agent-row { padding:14px 16px; gap:12px; }
+  .build-cta { padding:36px 20px; }
+  .build-cta .bc-line { font-size:16px; }
+  #pub-success { padding:32px 20px; }
+  #pub-success .ps-h { font-size:24px; }
+  #pub-success .ps-url { font-size:13px; padding:9px 16px; }
+  .os-head { flex-direction:column; align-items:flex-start; gap:16px; }
+  .af-detail { padding:18px 16px; }
+  .af-detail .det-name { font-size:21px; }
+  .stepper .st-lbl { font-size:9px; }
+  .cp-log { max-height:180px; }
+  .refine-legend { font-size:12px; }
+  .voice-quote { font-size:17px; }
+  .phrase { font-size:15px; }
 }
 </style>
 </head>
@@ -736,7 +772,7 @@ input,textarea,select { font-family:var(--font-body); }
   <div class="start-inner">
     <div class="eyebrow">Studio · Screen one, question one</div>
     <h1 class="serif-h" style="margin-top:18px;">Enter your firm's website.</h1>
-    <p class="sub">That's it. No forms, no discovery call, no forty-field intake.<br>Your website already says who you are. We'll read it.</p>
+    <p class="sub">That's it. No forms, no discovery call, no forty-field intake.<br> Your website already says who you are. We'll read it.</p>
     <div class="domain-row">
       <input type="text" id="domain-input" placeholder="yourfirm.com" value="yields4u.com" spellcheck="false">
       <button class="btn btn--gold btn--lg" onclick="startDiscovery()">Begin <span class="arr">→</span></button>
