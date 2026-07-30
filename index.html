@@ -2172,9 +2172,29 @@ function publishApp(){
 }
 
 /* ============================================================
-   INIT
+   INIT — supports deep links: ?s=1..15 jumps to a screen,
+   &ready=1 renders animated screens (2, 11) in their finished state
    ============================================================ */
-go(1);
+const qp = new URLSearchParams(location.search);
+if (qp.get('ready')) {
+  discoveryRan = true; buildRan = true;
+  document.querySelectorAll('.disc-item').forEach(i=>i.classList.add('shown'));
+  document.getElementById('disc-progress').style.width='100%';
+  document.getElementById('disc-status-text').textContent='Done. Nine discoveries, zero questions.';
+  document.getElementById('disc-pulse').style.display='none';
+  document.getElementById('disc-done').classList.add('shown');
+  AGENTS.forEach(([id,,msgs])=>{
+    const r=document.getElementById(id);
+    r.classList.add('live','done');
+    r.querySelector('.ag-status').textContent=msgs[msgs.length-1];
+    r.querySelector('.ag-state').textContent='Done';
+  });
+  document.getElementById('build-progress').style.width='100%';
+  document.getElementById('build-pct').textContent='100%';
+  document.getElementById('build-done-wrap').classList.add('shown');
+}
+const deepScreen = parseInt(qp.get('s'), 10);
+go(deepScreen >= 1 && deepScreen <= 15 ? deepScreen : 1);
 </script>
 </body>
 </html>
